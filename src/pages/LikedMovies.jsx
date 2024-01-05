@@ -22,8 +22,8 @@ const LikedMovies = () => {
     <div>
       <Navigation />
       <div className="cards-container">
-        {moviesAdd.map((film) => (
-          <Card key={film.id} film={film} />
+        {moviesAdd.map((movie) => (
+          <Card key={movie.id} film={movie} />
         ))}
       </div>
       <p className="credit">
