@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Card = ({ film }) => {
   const dateFormater = (date) => {
@@ -74,17 +75,30 @@ const Card = ({ film }) => {
   };
 
   const addMoviesToStorage = () => {
-    let dataToStorage = window.localStorage.film
+    let movieToStorage = window.localStorage.film
       ? window.localStorage.film.split(",")
       : [];
 
-    if (!dataToStorage.includes(film.id.toString())) {
-      dataToStorage.push(film.id);
-      window.localStorage.film = dataToStorage;
+    if (!movieToStorage.includes(film.id.toString())) {
+      movieToStorage.push(film.id);
+      // clef "film" pour LS => page likedmovies
+      window.localStorage.film = movieToStorage;
+    }
+  };
+  const addCardToStorage = () => {
+    let cardToStorage = window.localStorage.film
+      ? window.localStorage.film.split(",")
+      : [];
+
+    if (!cardToStorage.includes(film.id.toString())) {
+      cardToStorage.push(film.id);
+      // clef "filmCard" pour LS => page movie
+      window.localStorage.filmCard = cardToStorage;
     }
   };
   return (
-    <div className="card-container">
+    // <NavLink to={`/movie`} onClick={(e) => addCardToStorage(e)}>
+    <div className="card-container" onClick={(e) => addCardToStorage(e)}>
       <i
         type="submit"
         className="fa-regular fa-heart"
@@ -107,7 +121,8 @@ const Card = ({ film }) => {
         <p>Sortie le: {dateFormater(film.release_date)}</p>
         <div className="film-rate">
           <p>
-            Note des spectateurs : {Math.round(film.vote_average * 10) / 10}/10
+            Note des spectateurs : {Math.round(film.vote_average * 10) / 10}
+            /10
           </p>
         </div>
         <h4>Genres :</h4>
@@ -123,6 +138,7 @@ const Card = ({ film }) => {
         <p className="synopsis">{film.overview}</p>
       </div>
     </div>
+    // </NavLink>
   );
 };
 

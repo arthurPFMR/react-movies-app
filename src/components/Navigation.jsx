@@ -26,7 +26,9 @@ const Navigation = () => {
           </NavLink>
         </ul>
       </div>
-      <h1>movies search</h1>
+      <h1>
+        movies <br /> search
+      </h1>
     </div>
   );
 };

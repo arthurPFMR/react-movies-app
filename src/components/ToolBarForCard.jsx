@@ -1,3 +1,4 @@
+// https://api.themoviedb.org/3/search/movie?api_key=b90167f623ed1f3ecc1d2103113aa6d0&query=lego&language=fr-FR
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
@@ -30,20 +31,37 @@ const ToolBar = () => {
         <button
           className="chart up"
           type="submit"
-          //   onClick={setSortMovies === "goodToBad"}
+          onClick={() => {
+            setSortMovies("upToDown");
+          }}
         >
           <i className="fa-solid fa-arrow-trend-up"></i>
           <p>TOP</p>
         </button>
-        <button className="chart down" type="submit">
+        <button
+          className="chart down"
+          type="submit"
+          onClick={() => {
+            setSortMovies("downToUp");
+          }}
+        >
           <p>FLOP</p>
           <i className="fa-solid fa-arrow-trend-down"></i>
         </button>
       </div>
       <div className="cards-container">
-        {filmDatas.map((film) => (
-          <Card key={film.id} film={film} />
-        ))}
+        {filmDatas
+          .sort((a, b) => {
+            if (sortMovies === "upToDown") {
+              return b.vote_average - a.vote_average;
+            } else if (sortMovies === "downToUp") {
+              return a.vote_average - b.vote_average;
+            }
+            return setSortMovies
+          })
+          .map((film) => (
+            <Card key={film.id} film={film} />
+          ))}
       </div>
     </div>
   );

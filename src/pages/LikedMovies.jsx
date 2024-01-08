@@ -7,7 +7,7 @@ const LikedMovies = () => {
   const [moviesAdd, setMoviesAdd] = useState([]);
 
   useEffect(() => {
-    let idInStorage = window.localStorage.film
+    let idInStorage = window.localStorage.filmCard
       ? window.localStorage.film.split(",")
       : [];
     for (let i = 0; i < idInStorage.length; i++) {
