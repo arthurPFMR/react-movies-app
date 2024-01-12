@@ -4,7 +4,7 @@ import ToolBarForCard from "../components/ToolBarForCard";
 
 const Home = () => {
   return (
-    <div className="bg" style={{backgroundImage: "url(/public/img/film-2205325_640.jpg)"}}>
+    <div>
       <Navigation />
       <ToolBarForCard />
       <p className="credit">

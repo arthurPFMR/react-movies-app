@@ -2,29 +2,32 @@ import React, { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 import Card from "../components/Card";
 import axios from "axios";
+// `https://api.themoviedb.org/3/movie/${idInStorage[i]}?api_key=b90167f623ed1f3ecc1d2103113aa6d0&language=fr-FR`
 
 const LikedMovies = () => {
-  const [moviesAdd, setMoviesAdd] = useState([]);
+  const [filmsData, setFilmsData] = useState([]);
 
   useEffect(() => {
-    let idInStorage = window.localStorage.filmCard
-      ? window.localStorage.film.split(",")
+    let filmsId = window.localStorage.films
+      ? window.localStorage.films.split(",")
       : [];
-    for (let i = 0; i < idInStorage.length; i++) {
+    for (let i = 0; i < filmsId.length; i++) {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${idInStorage[i]}?api_key=b90167f623ed1f3ecc1d2103113aa6d0&language=fr-FR`
+          `https://api.themoviedb.org/3/movie/${filmsId[i]}?api_key=b90167f623ed1f3ecc1d2103113aa6d0&language=fr-FR`
         )
-        .then((res) => setMoviesAdd((moviesAdd) => [...moviesAdd, res.data]));
+        .then((res) => setFilmsData((filmsData) => [...filmsData, res.data]));//concatenation avec spread operator
     }
   }, []);
   return (
     <div>
       <Navigation />
       <div className="cards-container">
-        {moviesAdd.map((movie) => (
-          <Card key={movie.id} film={movie} />
-        ))}
+      {filmsData.length > 0 ? (
+        filmsData.map((film) => <Card film={film} key={film} />)
+      ) : (
+        <h2>Aucun film ajouté au favoris ⌛</h2>
+      )}
       </div>
       <p className="credit">
         Ce site utilise l'API de <a href="https://www.themoviedb.org/">TMDB</a>{" "}
