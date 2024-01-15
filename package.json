@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/plugin-transform-private-property-in-object": "^7.23.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.3",
     "babel": "^6.23.0",
+    "babel-preset-react-app": "^10.0.1",
     "cleanup-create-react-app": "^1.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -44,7 +44,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
-    "@babel/preset-env": "^7.23.8",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.22.1",
     "babel-loader": "^9.1.3",
     "webpack": "^5.89.0"
   }
