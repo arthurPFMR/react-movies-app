@@ -7,11 +7,6 @@ const ToolBar = () => {
   const [filmDatas, setFilmDatas] = useState([]);
   const [filmSearch, setFilmSearch] = useState("animaux");
   const [sortMovies, setSortMovies] = useState(null);
-  const [heartClicked, setHeartClicked] = useState(false);
-
-  const handleClickHeart = () => {
-    setHeartClicked(!heartClicked);
-  };
 
   useEffect(() => {
     axios(
@@ -39,11 +34,7 @@ const ToolBar = () => {
             setSortMovies("upToDown");
           }}
         >
-          <i
-            className={
-              heartClicked ? "heart-clicked" : "fa-solid fa-arrow-trend-up"
-            } 
-          ></i>
+          <i className={"fa-solid fa-arrow-trend-up"}></i>
           <p>TOP</p>
         </button>
         <button
@@ -51,7 +42,6 @@ const ToolBar = () => {
           type="submit"
           onClick={() => {
             setSortMovies("downToUp");
-            handleClickHeart();
           }}
         >
           <p>FLOP</p>
@@ -71,7 +61,7 @@ const ToolBar = () => {
             })
             .map((film) => <Card key={film.id} film={film} />)
         ) : (
-          <h2>Désolé nous n'avons pas pu trouver le film recherché 😞 </h2>
+          <h2>Désolé nous n'avons pas pu trouver le film recherché 😞</h2>
         )}
       </div>
     </div>

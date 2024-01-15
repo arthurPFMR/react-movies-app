@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 import Card from "../components/Card";
 import axios from "axios";
-// `https://api.themoviedb.org/3/movie/${idInStorage[i]}?api_key=b90167f623ed1f3ecc1d2103113aa6d0&language=fr-FR`
 
 const LikedMovies = () => {
   const [filmsData, setFilmsData] = useState([]);

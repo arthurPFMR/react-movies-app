@@ -5,6 +5,7 @@ const Card = ({ film }) => {
     let [yy, mm, dd] = date.split("-");
     return [dd, mm, yy].join("-");
   };
+  // ________________________________________________________
   const movieTags = () => {
     let tagsArray = [];
     for (let i = 0; i < film.genre_ids.length; i++) {
@@ -72,7 +73,7 @@ const Card = ({ film }) => {
     }
     return tagsArray.map((tag) => <li key={tag}>{tag}</li>);
   };
-
+  // __________________________________________________________
   const addMoviesToStorage = () => {
     let movieToStorage = window.localStorage.films
       ? window.localStorage.films.split(",")
@@ -84,13 +85,14 @@ const Card = ({ film }) => {
       window.localStorage.films = movieToStorage;
     }
   };
-
+  // __________________________________________________________
   const deleteMovieFromStorage = () => {
     let movieToStorage = window.localStorage.films.split(",");
     // eslint-disable-next-line
     let newMovieToStorage = movieToStorage.filter((id) => id != film.id);
     window.localStorage.films = newMovieToStorage;
   };
+  // ________________________________________________________
   return (
     <div className="card-container">
       <div className="poster">
@@ -134,7 +136,6 @@ const Card = ({ film }) => {
               : film.genres.map((tag) => <li key={tag}>{tag.name}</li>)}
           </ul>
         </div>
-        {/* <div className="line"></div> */}
         <div className="summary">
           <h4>Synopsis :</h4>
           <p className="synopsis">{film.overview}</p>

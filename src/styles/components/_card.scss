@@ -34,11 +34,9 @@
             scale: 1.2;
         }
     }
+
     .minus {
         color: rgb(154, 65, 65);
-    }
-    .heart-clicked {
-        color: red;
     }
 
     .infos {
@@ -54,10 +52,6 @@
         font-family: $font-1;
         font-weight: 800;
         letter-spacing: 3px;
-        // display: -webkit-box;
-        // -webkit-box-orient: vertical;
-        // -webkit-line-clamp: 1;
-        // overflow: hidden;
     }
 
     .tags {
@@ -84,7 +78,6 @@
 
     .summary {
         padding: 1%;
-        // width: 70vw;
 
         .synopsis {
             padding-top: 1%;
